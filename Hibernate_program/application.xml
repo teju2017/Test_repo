@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	   		http://www.springframework.org/schema/beans/spring-beans.xsd
+	   		http://www.springframework.org/schema/context
+	   		http://www.springframework.org/schema/context/spring-context.xsd">
+	   		
+	   		<!-- These are the beans generating the objects of the below mentioned classes -->
+	   		
+	   		<bean id="mycoach"
+	   		  class="com.tejas.learning.TrackCoach">
+	   	    </bean>
+	   	    
+	   		<bean id="shuttle"
+	   		  class="com.tejas.learning.Badminton">
+	   	    </bean>
+	   	    
+	   		<bean id="Depend2"
+	   		  class="com.tejas.learning.Dependencytwo">
+	   	    </bean>
+</beans>
