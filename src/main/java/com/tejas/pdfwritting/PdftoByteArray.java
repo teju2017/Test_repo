@@ -49,7 +49,9 @@ public class PdftoByteArray {
 	
 	public static void main(String[] args) throws Exception
 	{
-		PdftoByteArray pdf = new PdftoByteArray("T:\\Eclipse_workspace\\pdf-generator\\Second.pdf");
+		String abc="C:\\Users\\65964\\Desktop\\GIRO_IRAS.pdf";
+		//PdftoByteArray pdf = new PdftoByteArray("T:\\Eclipse_workspace\\pdf-generator\\Second.pdf");
+        PdftoByteArray pdf = new PdftoByteArray(abc);
 	    byte[] byt=pdf.convert();
 	    pdf.filewrite(byt);
 	    pdf.converttoPdf(byt);
