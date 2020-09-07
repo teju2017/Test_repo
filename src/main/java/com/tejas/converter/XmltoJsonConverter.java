@@ -8,6 +8,7 @@ import java.io.InputStream;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
 public class XmltoJsonConverter {
@@ -17,6 +18,15 @@ public class XmltoJsonConverter {
 	public XmltoJsonConverter(String xmlcontents)
 	{
 		this.xmlcontents=xmlcontents;
+	}
+	
+	
+	public void filewritting(String filecontents) throws Exception
+	{
+		 File fileobj = new File("content_file.json");
+		 FileOutputStream output = new FileOutputStream(fileobj);
+		 output.write(filecontents.getBytes());
+		 
 	}
 	
 	public JsonNode convertandSend() throws Exception
@@ -29,18 +39,14 @@ public class XmltoJsonConverter {
 	
 	public String Jsonwritter(JsonNode nodes) throws Exception
 	{
-		 ObjectMapper jsonmapper = new ObjectMapper();
+		 ObjectMapper jsonmapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
 		 String json = jsonmapper.writeValueAsString(nodes);
 		 return json;
 	}
 	
 	public static void main(String args[]) throws Exception
 	{
-		/*String XMLvalue="<Flower>\r\n" + 
-				"    <name>Poppy</name>\r\n" + 
-				"    <color>RED</color>\r\n" + 
-				"    <petals>9</petals>\r\n" + 
-				"</Flower>";*/
+
 		File fil = new File("T:\\Eclipse_workspace\\JSONConverter\\src\\main\\resources\\Sample.xml");
 		FileInputStream files = new FileInputStream(fil);
 		byte[] buffer = new byte[10];
@@ -52,10 +58,10 @@ public class XmltoJsonConverter {
 		}
 		files.close();
 		XmltoJsonConverter obj = new XmltoJsonConverter(sb.toString());
-		System.out.println("Input value is "+sb.toString());
 		JsonNode nod= obj.convertandSend();
 		System.out.println(" JSON object writter value ="+
 		                     obj.Jsonwritter(nod) );
+		obj.filewritting(obj.Jsonwritter(nod));
 	}
 	
 
